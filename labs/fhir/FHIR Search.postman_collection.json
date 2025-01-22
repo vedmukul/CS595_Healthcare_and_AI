@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "2ce0912f-0ca3-4972-9189-37266aaa8a97",
+		"name": "FHIR Search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11081176",
+		"_collection_link": "https://test44-4600.postman.co/workspace/ffc204ba-73ac-4059-8f47-e1f55f39c48c/collection/11081176-2ce0912f-0ca3-4972-9189-37266aaa8a97?action=share&source=collection_link&creator=11081176"
+	},
+	"item": [
+		{
+			"name": "get Patient",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{FHIR_SERVER}}/Patient?_id=110",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"Patient"
+					],
+					"query": [
+						{
+							"key": "_id",
+							"value": "110"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create Condition",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"resourceType\": \"Condition\",\r\n    \"clinicalStatus\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"http://terminology.hl7.org/CodeSystem/condition-clinical\",\r\n                \"code\": \"Active\",\r\n                \"display\": \"Active\"\r\n            }\r\n        ],\r\n        \"text\": \"Active\"\r\n    },\r\n    \"verificationStatus\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"http://terminology.hl7.org/CodeSystem/condition-ver-status\",\r\n                \"code\": \"confirmed\",\r\n                \"display\": \"Confirmed\"\r\n            }\r\n        ],\r\n        \"text\": \"Confirmed\"\r\n    },\r\n    \"category\": [\r\n        {\r\n            \"coding\": [\r\n                {\r\n                    \"system\": \"http://terminology.hl7.org/CodeSystem/condition-category\",\r\n                    \"code\": \"problem-list-item\",\r\n                    \"display\": \"Problem List Item\"\r\n                }\r\n            ],\r\n            \"text\": \"Problem List Item\"\r\n        }\r\n    ],\r\n    \"code\": {\r\n        \"coding\": [\r\n            {\r\n                \"system\": \"http://e-imo.com/products/problem-it\",\r\n                \"code\": \"334677\",\r\n                \"display\": \"Type 2 diabetes mellitus\"\r\n            },\r\n            {\r\n                \"system\": \"http://e-imo.com/products/problem-it-default\",\r\n                \"code\": \"334677\",\r\n                \"display\": \"Type 2 diabetes mellitus\"\r\n            },\r\n            {\r\n                \"system\": \"http://fhir.com/Score\",\r\n                \"code\": \"1.0\",\r\n                \"display\": \"1.0\"\r\n            },\r\n            {\r\n                \"system\": \"http://hl7.org/fhir/sid/icd-9-cm\",\r\n                \"code\": \"250.00\",\r\n                \"display\": \"250.00\"\r\n            },\r\n            {\r\n                \"system\": \"http://hl7.org/fhir/sid/icd-10-cm\",\r\n                \"code\": \"E11.9\",\r\n                \"display\": \"E11.9\"\r\n            },\r\n            {\r\n                \"system\": \"http://snomed.info/sct\",\r\n                \"code\": \"44054006\",\r\n                \"display\": \"44054006\"\r\n            }\r\n        ],\r\n        \"text\": \"Type 2 Diabetes\"\r\n    },\r\n    \"subject\": {\r\n        \"reference\": \"Patient/110\"\r\n    },\r\n    \"recordedDate\": \"2025-01-10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{FHIR_SERVER}}/Condition",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"Condition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create AllergyIntolerance",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"AllergyIntolerance\",\r\n  \"clinicalStatus\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://terminology.hl7.org/CodeSystem/allergyintolerance-clinical\",\r\n        \"code\": \"active\"\r\n      }\r\n    ]\r\n  },\r\n  \"verificationStatus\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://terminology.hl7.org/CodeSystem/allergyintolerance-verification\",\r\n        \"code\": \"unconfirmed\"\r\n      }\r\n    ]\r\n  },\r\n  \"type\": \"allergy\",\r\n  \"category\": [\r\n    \"medication\"\r\n  ],\r\n  \"criticality\": \"low\",\r\n  \"code\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://www.nlm.nih.gov/research/umls/rxnorm\",\r\n        \"code\": \"2670\",\r\n        \"display\": \"codeine\"\r\n      }\r\n    ],\r\n    \"text\": \"codeine\"\r\n  },\r\n  \"patient\": {\r\n    \"reference\": \"Patient/110\"\r\n  },\r\n  \"recordedDate\": \"2021-01-05T15:37:42-08:00\",\r\n  \"reaction\": [\r\n    {\r\n      \"manifestation\": [\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"http://snomed.info/sct\",\r\n              \"code\": \"41291007\",\r\n              \"display\": \"Angioedema\"\r\n            }\r\n          ],\r\n          \"text\": \"Angioedema\"\r\n        }\r\n      ],\r\n      \"severity\": \"severe\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{FHIR_SERVER}}/AllergyIntolerance",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"AllergyIntolerance"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create MedicationRequest",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"MedicationRequest\",\r\n  \"status\": \"active\",\r\n  \"intent\": \"order\",\r\n  \"medicationReference\": {\r\n    \"reference\": \"Medication/108\"\r\n  },\r\n  \"subject\": {\r\n    \"reference\": \"Patient/110\"\r\n  },\r\n  \"authoredOn\": \"2025-01-10\",\r\n  \"reasonCode\": [\r\n    {\r\n      \"coding\": [\r\n        {\r\n          \"system\": \"http://snomed.info/sct\",\r\n          \"display\": \"{'text': 'high blood pressure', 'imo_response': {'lexical_code': '58222', 'lexical_title': 'High blood pressure', 'default_lexical_code': '86491', 'default_lexical_title': 'Hypertension', 'metadata': {'mappings': {'icd9cm': {'codes': [{'code': '401.9', 'title': 'Unspecified essential hypertension', 'map_type': 'Preferred primary'}]}, 'icd10cm': {'codes': [{'code': 'I10', 'title': 'Essential (primary) hypertension', 'map_type': 'Preferred primary', 'relationship_type': 'Narrower than', 'code_metadata': {'ccsr': [{'ccsr_category': 'CIR007', 'ccsr_description': 'Essential hypertension'}], 'hcc': []}}]}, 'snomedInternational': {'codes': [{'code': '38341003', 'title': 'Hypertensive disorder', 'map_type': 'Preferred primary', 'mesh_code': 'D006973', 'relationship_type': 'Same as'}]}}, 'flags': {'is_icd10cm_refinable': True}}, 'score': 1, 'certainty': 'Exact'}}\"\r\n        },\r\n        {\r\n          \"system\": \"http://snomed.info/sct\",\r\n          \"display\": \"{'text': 'hormone imbalance', 'imo_response': {'lexical_code': '3541541', 'lexical_title': 'Hormone imbalance', 'default_lexical_code': '800608', 'default_lexical_title': 'Disorder of endocrine system', 'metadata': {'mappings': {'icd9cm': {'codes': [{'code': '259.9', 'title': 'Unspecified endocrine disorder', 'map_type': 'Preferred primary'}]}, 'icd10cm': {'codes': [{'code': 'E34.9', 'title': 'Endocrine disorder, unspecified', 'map_type': 'Preferred primary', 'relationship_type': 'Same as', 'code_metadata': {'ccsr': [{'ccsr_category': 'END015', 'ccsr_description': 'Other specified and unspecified endocrine disorders'}], 'hcc': []}}]}, 'snomedInternational': {'codes': [{'code': '362969004', 'title': 'Disorder of endocrine system', 'map_type': 'Preferred primary', 'mesh_code': 'D004700', 'relationship_type': 'Same as'}]}}, 'flags': {'is_icd10cm_refinable': False}}, 'score': 1, 'certainty': 'Exact'}}\"\r\n        },\r\n        {\r\n          \"system\": \"http://snomed.info/sct\",\r\n          \"display\": \"{'text': 'prevent kidney stones', 'imo_response': {'lexical_code': '11898', 'lexical_title': 'Kidney stone', 'default_lexical_code': '47623', 'default_lexical_title': 'Calculus of kidney', 'metadata': {'mappings': {'icd9cm': {'codes': [{'code': '592.0', 'title': 'Calculus of kidney', 'map_type': 'Preferred primary'}]}, 'icd10cm': {'codes': [{'code': 'N20.0', 'title': 'Calculus of kidney', 'map_type': 'Preferred primary', 'relationship_type': 'Same as', 'code_metadata': {'ccsr': [{'ccsr_category': 'GEN005', 'ccsr_description': 'Calculus of urinary tract'}], 'hcc': []}}]}, 'snomedInternational': {'codes': [{'code': '95570007', 'title': 'Kidney stone', 'map_type': 'Preferred primary', 'mesh_code': 'D053040', 'relationship_type': 'Same as'}]}}, 'flags': {'is_icd10cm_refinable': False}}, 'score': 0.811, 'certainty': 'Interpreted'}}\"\r\n        },\r\n        {\r\n          \"system\": \"http://snomed.info/sct\",\r\n          \"display\": \"{'text': 'swelling', 'imo_response': {'lexical_code': '27791', 'lexical_title': 'Swelling', 'default_lexical_code': '27791', 'default_lexical_title': 'Swelling', 'metadata': {'mappings': {'icd9cm': {'codes': [{'code': '782.3', 'title': 'Edema', 'map_type': 'Preferred primary'}]}, 'icd10cm': {'codes': [{'code': 'R60.9', 'title': 'Edema, unspecified', 'map_type': 'Preferred primary', 'relationship_type': 'Narrower than', 'code_metadata': {'ccsr': [{'ccsr_category': 'SYM016', 'ccsr_description': 'Other general signs and symptoms'}], 'hcc': []}}]}, 'snomedInternational': {'codes': [{'code': '65124004', 'title': 'Swelling', 'map_type': 'Preferred primary', 'mesh_code': '', 'relationship_type': 'Same as'}]}}, 'flags': {'is_icd10cm_refinable': False}}, 'score': 1, 'certainty': 'Exact'}}\"\r\n        }\r\n      ]\r\n    }\r\n  ],\r\n  \"note\": [\r\n    {\r\n      \"text\": \"Tell your doctor and pharmacist if you ever had an allergic reaction to a medicine.\"\r\n    },\r\n    {\r\n      \"text\": \"Do not use the medication any more than instructed.\"\r\n    },\r\n    {\r\n      \"text\": \"This medicine may cause dizziness or fainting.  Do not stand or sit up quickly.\"\r\n    },\r\n    {\r\n      \"text\": \"Your ability to stay alert or to react quickly may be impaired by this medicine. Do not drive or operate machinery until you know how this medicine will affect you.\"\r\n    },\r\n    {\r\n      \"text\": \"Please check with your doctor before drinking alcohol while on this medicine.\"\r\n    },\r\n    {\r\n      \"text\": \"This medicine passes into breast milk. Ask your doctor before breastfeeding.\"\r\n    },\r\n    {\r\n      \"text\": \"During pregnancy, this medicine should be used only when clearly needed. Talk to your doctor about the risks and benefits.\"\r\n    },\r\n    {\r\n      \"text\": \"Do not share this medicine with anyone who has not been prescribed this medicine.\"\r\n    }\r\n  ],\r\n  \"dosageInstruction\": [\r\n    {\r\n      \"additionalInstruction\": [\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"This medicine may be taken with or without food.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"This medicine will work best if you take it at about the same time every day.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"Do not take your last dose of the day within 4-6 hours of bedtime.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"Store at room temperature away from heat, light, and moisture.  Do not keep in the bathroom.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"This medicine will make you urinate more. If you have difficulty passing urine, please tell your doctor.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"Tell your doctor if you have severe or persistent sweating, diarrhea or vomiting.   These can increase your risk of a serious side effect.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"This medicine can make you sensitive to the sun. Use sunscreen or protective clothing when in sun.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"It is important that you keep taking each dose of this medicine on time even if you are feeling well.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"If you forget to take a dose on time, take it as soon as you remember. If it is almost time for the next dose, do not take the missed dose. Return to your normal schedule. Do not take 2 doses at one time.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"Drug interactions can change how medicines work or increase risk for side effects. Tell your health care providers about all medicines taken. Include prescription and over-the-counter medicines, vitamins, and herbal medicines. Speak with your doctor or pharmacist before starting or stopping any medicine.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"Tell your doctor if symptoms do not get better or if they get worse.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"This medicine may affect your blood sugar levels.  If you have diabetes, talk to your doctor before changing the dose of your diabetes medicine.\"\r\n            }\r\n          ]\r\n        },\r\n        {\r\n          \"coding\": [\r\n            {\r\n              \"display\": \"Keep all appointments for medical exams and tests while on this medicine.\"\r\n            }\r\n          ]\r\n        }\r\n      ],\r\n      \"timing\": {\r\n        \"repeat\": {\r\n          \"duration\": 1,\r\n          \"durationUnit\": \"d\",\r\n          \"frequency\": 3\r\n        },\r\n        \"code\": {\r\n          \"coding\": [\r\n            {\r\n              \"system\": \"https://terminology.hl7.org/5.4.0/CodeSystem-v3-GTSAbbreviation.html#v3-GTSAbbreviation-BID\",\r\n              \"code\": \"1\",\r\n              \"display\": \"Morning,Day,Evening\"\r\n            }\r\n          ]\r\n        }\r\n      },\r\n      \"route\": {\r\n        \"coding\": [\r\n          {\r\n            \"system\": \"http:/iemr.ehr/med-route\",\r\n            \"display\": \"Oral\"\r\n          }\r\n        ]\r\n      }\r\n    }\r\n  ],\r\n  \"dispenseRequest\": {\r\n    \"validityPeriod\": {\r\n      \"start\": \"2025-01-10\",\r\n      \"end\": \"2025-01-11\"\r\n    }\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{FHIR_SERVER}}/MedicationRequest",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"MedicationRequest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Observation",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Observation\",\r\n  \"code\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://foo\",\r\n        \"code\": \"12345\"\r\n      }\r\n    ]\r\n  },\r\n  \"subject\": {\r\n    \"reference\": \"Patient/110\"\r\n  },\r\n  \"effectiveDateTime\": \"2023-04-19T09:34:50+01:00\",\r\n  \"valueQuantity\": {\r\n    \"value\": 123,\r\n    \"unit\": \"kg\",\r\n    \"system\": \"http://bar\",\r\n    \"code\": \"kg\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{FHIR_SERVER}}/Observation",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"Observation"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update Observation",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"resourceType\": \"Observation\",\r\n  \"id\": \"114\",\r\n  \"meta\": {\r\n    \"versionId\": \"1\",\r\n    \"lastUpdated\": \"2023-04-19T10:02:19.015+00:00\",\r\n    \"source\": \"#oBPcgp37WbEoEqvF\"\r\n  },\r\n  \"code\": {\r\n    \"coding\": [\r\n      {\r\n        \"system\": \"http://foo\",\r\n        \"code\": \"12345\"\r\n      }\r\n    ]\r\n  },\r\n  \"subject\": {\r\n    \"reference\": \"Patient/110\"\r\n  },\r\n  \"effectiveDateTime\": \"2023-04-19T09:34:50+01:00\",\r\n  \"valueQuantity\": {\r\n    \"value\": 110,\r\n    \"unit\": \"kg\",\r\n    \"system\": \"http://bar\",\r\n    \"code\": \"kg\"\r\n  }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{FHIR_SERVER}}/Observation/114",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"Observation",
+						"114"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Observation",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{FHIR_SERVER}}/Observation?patient=110",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"Observation"
+					],
+					"query": [
+						{
+							"key": "patient",
+							"value": "110"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete Observation",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{FHIR_SERVER}}/Observation/114",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"Observation",
+						"114"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Patient (complete)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{FHIR_SERVER}}/Patient/?_id=110&_revinclude=*&_include=*",
+					"host": [
+						"{{FHIR_SERVER}}"
+					],
+					"path": [
+						"Patient",
+						""
+					],
+					"query": [
+						{
+							"key": "_id",
+							"value": "110"
+						},
+						{
+							"key": "_revinclude",
+							"value": "*"
+						},
+						{
+							"key": "_include",
+							"value": "*"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "FHIR_SERVER",
+			"value": "http://localhost:8080/fhir",
+			"type": "string"
+		}
+	]
+}

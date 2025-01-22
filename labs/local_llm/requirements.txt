@@ -1,0 +1,6 @@
+numpy==1.26.4
+PyPDF2
+faiss-cpu
+llama_cpp_python==0.2.75
+jupyter
+sentence-transformers==3.3.1

@@ -1,0 +1,18 @@
+# Exclude virtual environment
+venv/
+
+# Exclude PostgreSQL data directory (if applicable)
+labs/ccd/postgres_data/
+
+# Exclude system files
+.DS_Store
+Thumbs.db
+
+# Exclude Python cache files
+__pycache__/
+*.pyc
+*.pyo
+
+# Exclude logs and temporary files
+*.log
+*.tmp
